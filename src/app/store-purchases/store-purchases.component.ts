@@ -9,7 +9,7 @@ import { Observable } from "rxjs";
     <h2>Previous Purchases</h2>
     <ul>
       <li *ngFor="let purchase of purchases$ | async">
-        {{ purchase.date }}: \${{ purchase.total }}
+        {{ purchase.date | date }}: \${{ purchase.total }}
       </li>
     </ul>
   `
@@ -20,6 +20,7 @@ export class StorePurchasesComponent implements OnInit {
   constructor(private purchaseService: PurchaseService) {}
 
   ngOnInit(): void {
-    this.purchases$ = this.purchaseService.getPurchases();
+    this.purchases$ = this.purchaseService.purchases$;
+    this.purchaseService.getPurchases();
   }
 }

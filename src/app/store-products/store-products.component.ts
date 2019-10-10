@@ -9,7 +9,7 @@ import { Product } from "../product/product.model";
     <h2>Allowed Products</h2>
     <ul>
       <li *ngFor="let product of products$ | async">
-        {{ product.title }}: \${{ product.price }}
+        <store-product [product]="product"></store-product>
       </li>
     </ul>
   `
@@ -20,6 +20,7 @@ export class StoreProductsComponent implements OnInit {
   constructor(private productService: ProductService) {}
 
   ngOnInit(): void {
-    this.products$ = this.productService.getProducts();
+    this.products$ = this.productService.products$;
+    this.productService.getProducts();
   }
 }

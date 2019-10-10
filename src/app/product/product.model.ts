@@ -1,7 +1,8 @@
-export interface Product {    
+export interface Product {
   id: number;
   title: string;
   price: number;
   inventory: number;
+  inventoryFromServer?: number;
   imageUrl: string;
 }
