@@ -6,11 +6,10 @@ import { PurchaseService } from "../purchase/purchase.service";
 @Component({
   selector: "store-product",
   template: `
-    <p>{{ product.title }}: \${{ product.price }}</p>
+    <span>{{ product.title }}: \${{ product.price }}</span>
     <p>
       Current inventory: {{ product.inventory }}
-      <button (click)="pickUpProduct(product)" [disabled]="product.inventory === 0">Pick up</button
-      ><button (click)="rejectProduct(product)" [disabled]="product.inventory === product.inventoryFromServer">Reject</button>
+      <button (click)="pickUpProduct(product)" [disabled]="product.inventory === 0">Pick up</button>
     </p>
   `
 })
@@ -22,9 +21,5 @@ export class StoreProduct {
   public pickUpProduct(product: Product): void {
     this.productService.checkInProduct(product);
     this.purchaseService.addToCart(product);
-  }
-
-  public rejectProduct(product: Product): void {
-    this.productService.checkOutProduct(product);
   }
 }

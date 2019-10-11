@@ -1,6 +1,6 @@
 <h1>Shopping Cart Store</h1>
 <section style="display: flex;">
   <store-products></store-products>
-  <store-cart></store-cart>
+  <store-cart *ngIf="isBuying"></store-cart>
 </section>
 <store-purchases></store-purchases>

@@ -11,7 +11,7 @@ export class PurchaseService {
   private PURCHASE_URL = "https://my-json-server.typicode.com/cristoaquiza/store-json-server/purchases";
   private _purchases$ = new BehaviorSubject<Purchase[]>([]);
   private _cart$ = new BehaviorSubject<Purchase>({} as Purchase);
-  private store: { cart: Purchase } = { cart: { products: [], total: 0 } as Purchase };
+  private store: { cart: Purchase } = { cart: { date: Date.now().toString(), products: [], total: 0 } as Purchase };
   readonly purchases$ = this._purchases$.asObservable();
   readonly cart$ = this._cart$.asObservable();
 
@@ -24,11 +24,15 @@ export class PurchaseService {
   }
 
   public addToCart(product: Product): void {
-    if (!this.store.cart.date) {
-      this.store.cart.date = Date.now().toString();
-    }
     this.store.cart.products.push(product);
     this.store.cart.total += product.price;
+    this._cart$.next(Object.assign({}, this.store).cart);
+  }
+
+  public removeFromCart(product: Product): void {
+    const productRemovedIndex = this.store.cart.products.findIndex((element: Product) => element.id === product.id);
+    this.store.cart.products.splice(productRemovedIndex, 1);
+    this.store.cart.total -= product.price;
     this._cart$.next(Object.assign({}, this.store).cart);
   }
 }
