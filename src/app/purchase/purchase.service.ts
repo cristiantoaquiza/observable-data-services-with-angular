@@ -20,7 +20,7 @@ export class PurchaseService {
   public getPurchases(): void {
     this.http.get<Purchase[]>(this.purchaseUrl).subscribe((purchases: Purchase[]) => {
       this.store.purchases = purchases;
-      this._purchases$.next(Object.assign({}, this.store).purchases);
+      this.notifyPurchases();
     });
   }
 
@@ -30,22 +30,30 @@ export class PurchaseService {
     }
     this.store.cart.products.push(product);
     this.store.cart.total += product.price;
-    this._cart$.next(Object.assign({}, this.store).cart);
+    this.notifyCart();
   }
 
   public removeFromCart(product: Product): void {
     const productRemovedIndex = this.store.cart.products.findIndex((element: Product) => element.id === product.id);
     this.store.cart.products.splice(productRemovedIndex, 1);
     this.store.cart.total -= product.price;
-    this._cart$.next(Object.assign({}, this.store).cart);
+    this.notifyCart();
   }
 
   public submitCart(): void {
     this.http.post(this.purchaseUrl, this.store.cart).subscribe(() => {
       this.store.purchases.push(this.store.cart);
-      this._purchases$.next(Object.assign({}, this.store).purchases);
+      this.notifyPurchases();
       this.store.cart = {} as Purchase;
-      this._cart$.next(Object.assign({}, this.store).cart);
+      this.notifyCart();
     });
+  }
+
+  private notifyCart(): void {
+    this._cart$.next(Object.assign({}, this.store).cart);
+  }
+
+  private notifyPurchases(): void {
+    this._purchases$.next(Object.assign({}, this.store).purchases);
   }
 }

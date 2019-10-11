@@ -1,7 +1,6 @@
 import { Component, OnInit } from "@angular/core";
-import { PurchaseService } from "./purchase/purchase.service";
-import { Observable } from "rxjs";
 import { Purchase } from "./purchase/purchase.model";
+import { PurchaseService } from "./purchase/purchase.service";
 
 @Component({
   selector: "app-root",
@@ -10,6 +9,7 @@ import { Purchase } from "./purchase/purchase.model";
 })
 export class AppComponent implements OnInit {
   public isBuying: boolean;
+
   constructor(private purchaseService: PurchaseService) {}
 
   ngOnInit(): void {

@@ -17,7 +17,7 @@ export class ProductService {
   public getProducts(): void {
     this.http.get<Product[]>(this.productsUrl).subscribe((products: Product[]) => {
       this.store.products = products;
-      this._products$.next(Object.assign({}, this.store).products);
+      this.notifyProducts();
     });
   }
 
@@ -28,7 +28,7 @@ export class ProductService {
       }
       return product;
     });
-    this._products$.next(Object.assign({}, this.store).products);
+    this.notifyProducts();
   }
 
   public checkOutProduct(productCheckedOut: Product): void {
@@ -38,6 +38,10 @@ export class ProductService {
       }
       return product;
     });
+    this.notifyProducts();
+  }
+
+  private notifyProducts(): void {
     this._products$.next(Object.assign({}, this.store).products);
   }
 }
