@@ -1,6 +1,7 @@
 import { Component, Input } from "@angular/core";
 import { Product } from "../product/product.model";
 import { ProductService } from "../product/product.service";
+import { PurchaseService } from "../purchase/purchase.service";
 
 @Component({
   selector: "store-product",
@@ -16,10 +17,11 @@ import { ProductService } from "../product/product.service";
 export class StoreProduct {
   @Input() public product: Product;
 
-  constructor(private productService: ProductService) {}
+  constructor(private productService: ProductService, private purchaseService: PurchaseService) {}
 
   public pickUpProduct(product: Product): void {
     this.productService.checkInProduct(product);
+    this.purchaseService.addToCart(product);
   }
 
   public rejectProduct(product: Product): void {
