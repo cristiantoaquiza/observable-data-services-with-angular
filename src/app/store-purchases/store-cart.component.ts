@@ -16,7 +16,7 @@ import { ProductService } from "../product/product.service";
         <button (click)="rejectProduct(product)">Reject</button>
       </li>
     </ul>
-    <span *ngIf="cart.total">Total: \${{ cart.total }}</span>
+    <span *ngIf="cart.total">Total: \${{ cart.total }}<button (click)="submit(product)">Submit</button></span>
   `
 })
 export class StoreCartComponent implements OnInit {
@@ -33,5 +33,9 @@ export class StoreCartComponent implements OnInit {
   public rejectProduct(product: Product): void {
     this.productService.checkOutProduct(product);
     this.purchaseService.removeFromCart(product);
+  }
+
+  public submit(): void {
+    this.purchaseService.submitCart();
   }
 }
