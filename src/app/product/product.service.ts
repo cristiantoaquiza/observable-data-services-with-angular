@@ -7,7 +7,7 @@ import { Product } from "./product.model";
   providedIn: "root"
 })
 export class ProductService {
-  private productsUrl = "https://my-json-server.typicode.com/cristoaquiza/store-json-server/products";
+  private productsUrl = "https://my-json-server.typicode.com/cristoaquiza/observable-data-services-with-angular/products";
   private _products$ = new BehaviorSubject<Product[]>([]);
   private store: { products: Product[] } = { products: [] };
   readonly products$ = this._products$.asObservable();
@@ -16,10 +16,7 @@ export class ProductService {
 
   public getProducts(): void {
     this.http.get<Product[]>(this.productsUrl).subscribe((products: Product[]) => {
-      this.store.products = products.map((product: Product) => {
-        product.inventoryFromServer = product.inventory;
-        return product;
-      });
+      this.store.products = products;
       this._products$.next(Object.assign({}, this.store).products);
     });
   }

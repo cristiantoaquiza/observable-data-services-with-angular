@@ -3,6 +3,5 @@ export interface Product {
   title: string;
   price: number;
   inventory: number;
-  inventoryFromServer?: number;
   imageUrl: string;
 }

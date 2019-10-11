@@ -8,7 +8,7 @@ import { Product } from "../product/product.model";
   providedIn: "root"
 })
 export class PurchaseService {
-  private purchaseUrl = "https://my-json-server.typicode.com/cristoaquiza/store-json-server/purchases";
+  private purchaseUrl = "https://my-json-server.typicode.com/cristoaquiza/observable-data-services-with-angular/purchases";
   private _purchases$ = new BehaviorSubject<Purchase[]>([]);
   private _cart$ = new BehaviorSubject<Purchase>({} as Purchase);
   private store: { cart: Purchase; purchases: Purchase[] } = { cart: {} as Purchase, purchases: [] };
@@ -19,14 +19,14 @@ export class PurchaseService {
 
   public getPurchases(): void {
     this.http.get<Purchase[]>(this.purchaseUrl).subscribe((purchases: Purchase[]) => {
-      this.store.purchases = purchases
+      this.store.purchases = purchases;
       this._purchases$.next(Object.assign({}, this.store).purchases);
     });
   }
 
   public addToCart(product: Product): void {
     if (Object.entries(this.store.cart).length === 0) {
-      this.store.cart = { date: Date.now().toString(), products: [], total: 0 } as Purchase;
+      this.store.cart = { date: Date.now(), products: [], total: 0 } as Purchase;
     }
     this.store.cart.products.push(product);
     this.store.cart.total += product.price;

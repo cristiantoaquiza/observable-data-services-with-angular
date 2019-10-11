@@ -1,0 +1,83 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "title": "Oculus Quest All-in-one VR Gaming Headset – 64GB",
+      "price": 399.0,
+      "inventory": 2,
+      "imageUrl": "https://images-na.ssl-images-amazon.com/images/I/71Jusge445L._AC_.jpg"
+    },
+    {
+      "id": 2,
+      "title": "Call of Duty: Modern Warfare - PlayStation 4",
+      "price": 59.99,
+      "inventory": 10,
+      "imageUrl": "https://images-na.ssl-images-amazon.com/images/I/81n2llGXyiL._AC_SL1500_.jpg"
+    },
+    {
+      "id": 3,
+      "title": "Borderlands 3 Super Deluxe Edition - PlayStation 4",
+      "price": 99.99,
+      "inventory": 5,
+      "imageUrl": "https://images-na.ssl-images-amazon.com/images/I/812NfkYr2rL._AC_SL1500_.jpg"
+    },
+    {
+      "id": 4,
+      "title": "DualShock 4 Wireless Controller for PlayStation 4 - Magma Red",
+      "price": 44.1,
+      "inventory": 15,
+      "imageUrl": "https://images-na.ssl-images-amazon.com/images/I/81L9%2B4dTIgL._AC_.jpg"
+    },
+    {
+      "id": 5,
+      "title": "PlayStation 4 Slim 1TB Console",
+      "price": 282.49,
+      "inventory": 3,
+      "imageUrl": "https://images-na.ssl-images-amazon.com/images/I/71PGvPXpk5L._AC_.jpg"
+    }
+  ],
+  "purchases": [
+    {
+      "id": 1,
+      "purchaseDate": 1569550656189,
+      "products": [
+        {
+          "id": 2,
+          "title": "Call of Duty: Modern Warfare - PlayStation 4",
+          "price": 59.99,
+          "inventory": 10,
+          "imageUrl": "https://images-na.ssl-images-amazon.com/images/I/81n2llGXyiL._AC_SL1500_.jpg"
+        },
+        {
+          "id": 3,
+          "title": "Borderlands 3 Super Deluxe Edition - PlayStation 4",
+          "price": 99.99,
+          "inventory": 5,
+          "imageUrl": "https://images-na.ssl-images-amazon.com/images/I/812NfkYr2rL._AC_SL1500_.jpg"
+        }
+      ],
+      "total": 159.98
+    },
+    {
+      "id": 2,
+      "purchaseDate": 1569550703210,
+      "products": [
+        {
+          "id": 4,
+          "title": "DualShock 4 Wireless Controller for PlayStation 4 - Magma Red",
+          "price": 44.1,
+          "inventory": 15,
+          "imageUrl": "https://images-na.ssl-images-amazon.com/images/I/81L9%2B4dTIgL._AC_.jpg"
+        },
+        {
+          "id": 5,
+          "title": "PlayStation 4 Slim 1TB Console",
+          "price": 282.49,
+          "inventory": 3,
+          "imageUrl": "https://images-na.ssl-images-amazon.com/images/I/71PGvPXpk5L._AC_.jpg"
+        }
+      ],
+      "total": 326.59
+    }
+  ]
+}

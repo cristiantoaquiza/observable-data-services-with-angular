@@ -1,7 +1,7 @@
 import { Product } from "../product/product.model";
 export interface Purchase {
   id: number;
-  date: string;
+  date: number;
   products: Product[];
   total: number;
 }

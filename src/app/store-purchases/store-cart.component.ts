@@ -1,9 +1,8 @@
 import { Component, OnInit } from "@angular/core";
-import { PurchaseService } from "../purchase/purchase.service";
-import { Observable } from "rxjs";
-import { Purchase } from "../purchase/purchase.model";
 import { Product } from "../product/product.model";
 import { ProductService } from "../product/product.service";
+import { Purchase } from "../purchase/purchase.model";
+import { PurchaseService } from "../purchase/purchase.service";
 
 @Component({
   selector: "store-cart",
